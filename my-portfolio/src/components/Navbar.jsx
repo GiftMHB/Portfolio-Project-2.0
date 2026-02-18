@@ -1,10 +1,39 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [active, setActive] = useState("home");
+
+  useEffect(() => {
+    const sections = document.querySelectorAll("section");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActive(entry.target.id);
+          }
+        });
+      },
+      { threshold: 0.6 }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    return () => {
+      sections.forEach((section) => observer.unobserve(section));
+    };
+  }, []);
+
+  const linkClass = (section) =>
+    `transition ${
+      active === section
+        ? "text-yellow-400"
+        : "hover:text-yellow-400"
+    }`;
 
   return (
-    <nav className="fixed w-full bg-black text-white shadow-md z-50"> 
+    <nav className="fixed w-full bg-black text-white shadow-md z-50">
       <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
         
         {/* Logo */}
@@ -15,22 +44,27 @@ export default function Navbar() {
         {/* Desktop Menu */}
         <ul className="hidden md:flex space-x-8 font-medium">
           <li>
-            <a href="#home" className="hover:text-yellow-400 transition">
+            <a href="#home" className={linkClass("home")}>
               Home
             </a>
           </li>
           <li>
-            <a href="#about" className="hover:text-yellow-400 transition">
+            <a href="#about" className={linkClass("about")}>
               About
             </a>
           </li>
           <li>
-            <a href="#projects" className="hover:text-yellow-400 transition">
+            <a href="#skills" className={linkClass("skills")}>
+              Skills
+            </a>
+          </li>
+          <li>
+            <a href="#projects" className={linkClass("projects")}>
               Projects
             </a>
           </li>
           <li>
-            <a href="#contact" className="hover:text-yellow-400 transition">
+            <a href="#contact" className={linkClass("contact")}>
               Contact
             </a>
           </li>
@@ -49,22 +83,47 @@ export default function Navbar() {
       {isOpen && (
         <ul className="md:hidden bg-black text-center space-y-4 pb-4">
           <li>
-            <a href="#home" onClick={() => setIsOpen(false)} className="block hover:text-yellow-400">
+            <a
+              href="#home"
+              onClick={() => setIsOpen(false)}
+              className={`block ${linkClass("home")}`}
+            >
               Home
             </a>
           </li>
           <li>
-            <a href="#about" onClick={() => setIsOpen(false)} className="block hover:text-yellow-400">
+            <a
+              href="#about"
+              onClick={() => setIsOpen(false)}
+              className={`block ${linkClass("about")}`}
+            >
               About
             </a>
           </li>
           <li>
-            <a href="#projects" onClick={() => setIsOpen(false)} className="block hover:text-yellow-400">
+            <a
+              href="#skills"
+              onClick={() => setIsOpen(false)}
+              className={`block ${linkClass("skills")}`}
+            >
+              Skills
+            </a>
+          </li>
+          <li>
+            <a
+              href="#projects"
+              onClick={() => setIsOpen(false)}
+              className={`block ${linkClass("projects")}`}
+            >
               Projects
             </a>
           </li>
           <li>
-            <a href="#contact" onClick={() => setIsOpen(false)} className="block hover:text-yellow-400">
+            <a
+              href="#contact"
+              onClick={() => setIsOpen(false)}
+              className={`block ${linkClass("contact")}`}
+            >
               Contact
             </a>
           </li>

@@ -2,7 +2,7 @@ import giftImage from '../assets/Gift.jpg';
 
 export default function Hero() {
   return (
-    <section className="min-h-screen bg-gradient-to-b from-black via-gray-900 to-black text-white flex items-center justify-center px-6 pt-24">
+    <section id="home" className="min-h-screen bg-linear-to-b from-black via-gray-900 to-black text-white flex items-center justify-center px-6 pt-24">
       <div className="max-w-6xl mx-auto text-center space-y-12">
         {/* image */}
         <div className="flex justify-center">
