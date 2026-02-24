@@ -2,10 +2,11 @@ export default function About() {
   return (
     <section id="about" className="min-h-screen bg-linear-to-b from-black via-gray-900 to-gray-800 text-white ">
 
+      <div className=" text-black font-bold flex items-center justify-center mb-8">
+        <h2 className="text-4xl font-bold text-white pr-8">About Me</h2>
+      </div> 
+
       <div className="flex flex-col justify-center items-start">
-        <div className="w-180 h-17 bg-yellow-400 text-black font-bold  flex items-center justify-end rounded-r-lg mb-8">
-            <h2 className="text-4xl font-bold text-white pr-8">About Me</h2>
-        </div>
 
         <div className="justify-center bg-gray-500 border-0 rounded-lg p-4 mx-4">
           <p className="text-lg text-white">
@@ -19,7 +20,7 @@ export default function About() {
 
       </div>
 
-      <div className="w-180 h-17 bg-yellow-400 text-black font-bold  flex items-center justify-end rounded-r-lg mt-8">
+      <div className=" text-black font-bold  flex items-center justify-center rounded-r-lg mt-8">
         <h2 className="text-4xl font-bold text-white pr-8">What I Do</h2>
       </div>
 
