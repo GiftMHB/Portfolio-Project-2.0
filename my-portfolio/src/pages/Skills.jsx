@@ -47,7 +47,7 @@ export default function Skills() {
       <div>
         <ul className="list-disc list-inside text-white">
           <li>Git & GitHub</li>
-          <li>Docker (if applicable)</li>
+          <li>Docker</li>
           <li>VS Code</li>
           <li>Postman</li>
           <li>Figma</li>
