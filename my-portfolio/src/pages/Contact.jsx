@@ -44,7 +44,7 @@ export default function Contact(){
             <h2 className="text-yellow-400 font-semibold">Phone</h2>
             <p className="text-gray-400">+27 81 303 6172</p>
             <h2 className="text-yellow-400 font-semibold">Email</h2>
-            <p className="text-gray-400"><a href="mailto:giftmohuba159@email.com" className=" hover:underline ">giftmohuba159@email.com</a></p>
+            <p className="text-gray-400"><a href="mailto:giftmohuba159@gmail.com" className=" hover:underline ">giftmohuba159@gmail.com</a></p>
           </div>
 
           <div className="flex gap-5 pt-4 text-xl">
