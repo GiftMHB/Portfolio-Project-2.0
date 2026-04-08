@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react";
+import { useGithubRepo } from "../components/useGithubRepo";
 
 export default function Projects() {
-  const [repos, setRepos] = useState([]);
+  
+  const { repos, loading, error } = useGithubRepo("https://api.github.com/users/GiftMHB/repos");
 
-  useEffect(() => {
-    fetch("https://api.github.com/users/GiftMHB/repos")
-      .then((response) => response.json())
-      .then((data) => {
-        // console.log("GitHub Repositories:", data);
-        setRepos(data);
-      });
-  }, []);
+  // TODO: Add loading state handling
+  if (______) return <div>Loading...</div>;  // ← What condition?
+  
+  // TODO: Add error state handling  
+  if (______) return <div>Error: {______}</div>;  // ← What condition and what to show?
 
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 4;
