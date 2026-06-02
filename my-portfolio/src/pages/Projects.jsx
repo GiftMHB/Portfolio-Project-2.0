@@ -1,17 +1,18 @@
 import { useEffect, useState } from "react";
-import { useGithubRepo } from "../components/useGithubRepo";
+import useGithubRepo from "../components/useGithubRepo";
 
 export default function Projects() {
-  
+
   const { repos, loading, error } = useGithubRepo("https://api.github.com/users/GiftMHB/repos");
-
-  // TODO: Add loading state handling
-  if (______) return <div>Loading...</div>;  // ← What condition?
-  
-  // TODO: Add error state handling  
-  if (______) return <div>Error: {______}</div>;  // ← What condition and what to show?
-
   const [currentPage, setCurrentPage] = useState(1);
+
+  //shows loading when waiting 
+  if (loading) return <div>Loading...</div>;  
+
+  //error for when fetch fails   
+  if (error) return <div>Failed to load repositories.</div>;  
+
+  
   const itemsPerPage = 4;
   const totalPages = Math.ceil(repos.length / itemsPerPage);
 
@@ -23,12 +24,16 @@ export default function Projects() {
       id="projects"
       className="min-h-screen bg-linear-to-b from-black via-gray-900 to-gray-800 text-white"
     >
+      {/* heading */}
       <div className=" text-black font-bold flex items-center justify-center mb-8">
         <h2 className="text-4xl font-bold text-white pr-8">Projects</h2>
       </div>
 
+      {/* container of all cards */}
       <div className="grid md:grid-cols lg:grid-cols-2 gap-8 mx-8">
         {currentRepos.map((repo, index) => (
+
+          /* card */
           <div
             key={repo.id}
             className="bg-gray-900 border border-gray-700 rounded-2xl p-6 hover:scale-105 transition"
@@ -53,10 +58,13 @@ export default function Projects() {
           </div>
         ))}
       </div>
+
+      {/* last part that shows "page of ..." and the next and Previous button */}
       <div className="flex  mt-8 mx-8 justify-between items-center">
         <p>
           Page {currentPage} of {totalPages}
         </p>
+
         <div>
           <button
             onClick={() => setCurrentPage((p) => p - 1)}
