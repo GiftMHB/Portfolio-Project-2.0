@@ -7,6 +7,7 @@ export default function Projects() {
   const { repos, loading, error } = useGithubRepo("https://api.github.com/users/GiftMHB/repos");
   const [currentPage, setCurrentPage] = useState(1);
   const [isUniOpen, setIsUniOpen] = useState(true);
+  const [isLiveProjects, setIsLiveProjects] = useState(true);
 
 
   //shows loading when waiting 
@@ -92,7 +93,16 @@ export default function Projects() {
         </div>
       </CollapsibleSection>
       
-      <CollapsibleSection>
+      <CollapsibleSection
+        title="Live Projects"
+        count={0}
+        variant="liv"
+        isOpen={isLiveProjects}
+        onToggle={() => setIsLiveProjects(prev => !prev)}
+      >
+        <div className="grid md:grid-cols lg:grid-cols-2 gap-8 mx-8">
+          <p>hello</p>
+        </div>
       </CollapsibleSection>
 
     </section>
