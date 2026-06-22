@@ -8,7 +8,7 @@ export default function Projects() {
   const [currentPage, setCurrentPage] = useState(1);
   const [isUniOpen, setIsUniOpen] = useState(true);
 
- 
+
   //shows loading when waiting 
   if (loading) return <div>Loading...</div>;
 
@@ -37,7 +37,7 @@ export default function Projects() {
         count={4}
         variant="uni"
         isOpen={isUniOpen}
-        onToggle={ () => setIsUniOpen(prev => !prev)}
+        onToggle={() => setIsUniOpen(prev => !prev)}
       >
         <div className="grid md:grid-cols lg:grid-cols-2 gap-8 mx-8">
           {currentRepos.map((repo, index) => (
@@ -67,35 +67,34 @@ export default function Projects() {
             </div>
           ))}
         </div>
+        {/* last part that shows "page of ..." and the next and Previous button */}
+        <div className="flex  mt-8 mx-8 justify-between items-center">
+          <p>
+            Page {currentPage} of {totalPages}
+          </p>
+
+          <div>
+            <button
+              onClick={() => setCurrentPage((p) => p - 1)}
+              disabled={currentPage === 1}
+              className="px-4 py-2 bg-gray-700 text-orange-300 rounded-md mr-2 disabled:opacity-50"
+            >
+              Previous
+            </button>
+            <button
+              onClick={() => setCurrentPage((p) => p + 1)}
+              disabled={currentPage === totalPages}
+              className="px-4 py-2 bg-gray-700 text-orange-300 rounded-md disabled:opacity-50"
+            >
+              Next
+            </button>
+          </div>
+        </div>
+      </CollapsibleSection>
+      
+      <CollapsibleSection>
       </CollapsibleSection>
 
-
-      {/* container of all cards */}
-
-
-      {/* last part that shows "page of ..." and the next and Previous button */}
-      <div className="flex  mt-8 mx-8 justify-between items-center">
-        <p>
-          Page {currentPage} of {totalPages}
-        </p>
-
-        <div>
-          <button
-            onClick={() => setCurrentPage((p) => p - 1)}
-            disabled={currentPage === 1}
-            className="px-4 py-2 bg-gray-700 text-orange-300 rounded-md mr-2 disabled:opacity-50"
-          >
-            Previous
-          </button>
-          <button
-            onClick={() => setCurrentPage((p) => p + 1)}
-            disabled={currentPage === totalPages}
-            className="px-4 py-2 bg-gray-700 text-orange-300 rounded-md disabled:opacity-50"
-          >
-            Next
-          </button>
-        </div>
-      </div>
     </section>
   );
 }
