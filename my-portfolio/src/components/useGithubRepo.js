@@ -8,8 +8,6 @@ export default function useGithubRepo(url) {
 
   useEffect(() => {
 
-    setLoading(true);
-
     fetch(url)
       .then(response => response.json())
       .then((data) => { 
