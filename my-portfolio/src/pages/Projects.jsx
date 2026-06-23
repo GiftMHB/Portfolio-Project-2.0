@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import useGithubRepo from "../components/useGithubRepo";
 import CollapsibleSection from "../components/CollapsibleSection";
 
@@ -7,7 +7,8 @@ export default function Projects() {
   const { repos, loading, error } = useGithubRepo("https://api.github.com/users/GiftMHB/repos");
   const [currentPage, setCurrentPage] = useState(1);
   const [isUniOpen, setIsUniOpen] = useState(true);
-  const [isLiveProjects, setIsLiveProjects] = useState(true);
+  const [isLiveProjects, setIsLiveProjects] = useState(false);
+  const [inDevProjects, setInDevProjects] = useState(false);
 
 
   //shows loading when waiting 
@@ -34,9 +35,8 @@ export default function Projects() {
       </div>
 
       <CollapsibleSection
-        title="University Projects"
-        count={4}
-        variant="uni"
+        title="University Projects & Public on github"
+        count={repos.length}
         isOpen={isUniOpen}
         onToggle={() => setIsUniOpen(prev => !prev)}
       >
@@ -92,16 +92,26 @@ export default function Projects() {
           </div>
         </div>
       </CollapsibleSection>
-      
+
       <CollapsibleSection
         title="Live Projects"
         count={0}
-        variant="liv"
         isOpen={isLiveProjects}
         onToggle={() => setIsLiveProjects(prev => !prev)}
       >
         <div className="grid md:grid-cols lg:grid-cols-2 gap-8 mx-8">
-          <p>hello</p>
+          <p>Coming soon</p>
+        </div>
+      </CollapsibleSection>
+
+      <CollapsibleSection
+        title="In development"
+        count={0}
+        isOpen={inDevProjects}
+        onToggle={() => setInDevProjects(prev => !prev)}
+      >
+        <div className="grid md:grid-cols lg:grid-cols-2 gap-8 mx-8">
+          <p>Coming soon</p>
         </div>
       </CollapsibleSection>
 

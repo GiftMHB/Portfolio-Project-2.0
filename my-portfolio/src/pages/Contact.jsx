@@ -1,6 +1,7 @@
 import React, {useRef} from "react";
 import emailjs from "@emailjs/browser";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
+import Button from "../components/UI/Button";
 
 export default function Contact(){
 
@@ -78,9 +79,13 @@ export default function Contact(){
             <textarea className="w-full bg-transparent border-b border-gray-600 focus:border-yellow-400 outline-none py-2 text-white placeholder-gray-500 transition-colors duration-200"
             name="message" rows="4" required placeholder="Your message"></textarea>
 
-            <button type="submit" className="w-full py-3 bg-yellow-400 text-black font-semibold rounded-lg hover:bg-yellow-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-yellow-400/30 transition-all duration-200 active:scale-95">
-              Send Message
-            </button>
+            <Button
+              title="Send Message"
+              type="submit"
+              variant="secondary"
+              className="w-full"
+            />
+              
           </form>
         </div>
         
